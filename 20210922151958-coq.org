@@ -1,0 +1,18 @@
+:PROPERTIES:
+:ID:       42c452d7-cd84-4b48-baed-f8421e7d20cf
+:END:
+#+title: Coq tactic apply
+
+* Difference between apply and [[id:eacb3f4e-f077-4db9-814d-89f270a51fbd][rewrite]]
+
+The rewrite tactic is used to apply a known equality to either the
+goal or a hypothesis in the context, replacing all occurrences of one
+side by the other. The *apply* tactic uses a known implication (a
+hypothesis from the context, a previously proved lemma, or a
+constructor) to modify the proof state either backward (if the goal
+matches the conclusion of the implication, in which case a subgoal
+generated for each premise of the implication) or forward (if some
+hypothesis matches the premise of the implication, in which this
+hypothesis is replaced by the conclusion of the implication). If the
+fact is itself an equality (i.e., an implication with no premises),
+then either tactic can be used.

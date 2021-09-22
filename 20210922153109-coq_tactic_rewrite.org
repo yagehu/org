@@ -1,0 +1,5 @@
+:PROPERTIES:
+:ID:       eacb3f4e-f077-4db9-814d-89f270a51fbd
+:END:
+#+title: Coq tactic rewrite
+
