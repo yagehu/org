@@ -3,6 +3,80 @@
 :END:
 #+title: Coq tactic apply
 
+* =apply with=
+
+** Example
+
+This silly example needs two rewrites to get from =[a; b]= to =[e; f]=.
+
+#+BEGIN_SRC coq
+  Example trans_eq_example : forall (a b c d e f : nat),
+   [a;b] = [c;d] ->
+   [c;d] = [e;f] ->
+   [a;b] = [e;f].
+  Proof.
+    intros a b c d e f eq1 eq2.
+    rewrite -> eq1.
+    rewrite -> eq2.
+    reflexivity.
+  Qed.
+#+END_SRC
+      
+Since this is a common pattern, we might like to pull it out as lemma
+that records, once and for all, the fact that equality is transitive.
+      
+#+BEGIN_SRC coq
+  Theorem trans_eq : forall (X:Type) (n m o : X),
+      n = m -> m = o -> n = o.
+  Proof.
+    intros X n m o eq1 eq2.
+    rewrite -> eq1.
+    rewrite -> eq2.
+    reflexivity.
+  Qed.
+#+END_SRC
+  
+Now, we should be able to use =trans_eq= to prove the above
+example. However, to do this we need a slight refinement of the
+=apply= tactic.
+  
+#+BEGIN_SRC coq
+  Example trans_eq_example' : forall (a b c d e f : nat),
+      [a;b] = [c;d] ->
+      [c;d] = [e;f] ->
+      [a;b] = [e;f].
+  Proof.
+    intros a b c d e f eq1 eq2.
+  
+    (** If we simply tell Coq [apply trans_eq] at this point, it can
+	tell (by matching the goal against the conclusion of the lemma)
+	that it should instantiate [X] with [[nat]], [n] with [[a,b]], and
+	[o] with [[e,f]].  However, the matching process doesn't determine
+	an instantiation for [m]: we have to supply one explicitly by
+	adding "[with (m:=[c,d])]" to the invocation of [apply]. *)
+  
+    apply trans_eq with (m:=[c;d]).
+    apply eq1. apply eq2.
+  Qed.
+#+END_SRC
+  
+Actually, the name =m= in the =with= clause is not required, since Coq
+is often smart enough to figure out which variable we are
+instantiating. We could instead simply write =apply trans_eq with
+[c;d]=.
+
+#+BEGIN_SRC coq
+  Example trans_eq_example'' : forall (a b c d e f : nat),
+       [a;b] = [c;d] ->
+       [c;d] = [e;f] ->
+       [a;b] = [e;f].
+  Proof.
+    intros a b c d e f eq1 eq2.
+    transitivity [c;d].
+    apply eq1. apply eq2.
+  Qed.
+#+END_SRC
+
 * Difference between apply and [[id:eacb3f4e-f077-4db9-814d-89f270a51fbd][rewrite]]
 
 The rewrite tactic is used to apply a known equality to either the
@@ -16,3 +90,4 @@ hypothesis matches the premise of the implication, in which this
 hypothesis is replaced by the conclusion of the implication). If the
 fact is itself an equality (i.e., an implication with no premises),
 then either tactic can be used.
+

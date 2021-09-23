@@ -1,0 +1,19 @@
+:PROPERTIES:
+:ID:       0ca0ac91-fc7c-4620-9701-9aa781c5f2db
+:END:
+#+title: Coq tactic injection
+
+=injection H= asks Coq to generate all equations that it can infer
+from =H= using the [[id:905ba248-e353-4e3a-bb3f-7b2406bb3efc][injectivity]] of constructors.
+
+* Example
+
+#+BEGIN_SRC coq
+  Theorem S_injective' :
+    forall (n m : nat), S n = S m -> n = m.
+  Proof.
+    intros n m H.
+    injection H as Hnm.
+    apply Hnm.
+  Qed.
+#+END_SRC

@@ -1,0 +1,25 @@
+:PROPERTIES:
+:ID:       905ba248-e353-4e3a-bb3f-7b2406bb3efc
+:END:
+#+title: Coq injectivity
+
+An injective function is a function that maps distinct elements; that
+is $f(x_1) = f(x_2)$ implies $x_1 = x_2$.
+
+For every inductively defined type, all constructors are injective in
+addition to being disjoint.
+
+* Example
+
+#+BEGIN_SRC coq
+  Inductive nat : Type :=
+    | O
+    | S (n : nat).
+#+END_SRC
+
+Implicit in this definition are two additional facts:
+
+- The constructor =S= is injective (or one-to-one). That is, if =S n =
+  S m=, it must be that =n = m=.
+- The constructors =O= and =S= are disjoint. That is, =O= is not equal
+  to =S n= for any =n=.
