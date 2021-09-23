@@ -1,0 +1,5 @@
+:PROPERTIES:
+:ID:       58948d93-5fd4-41aa-95ad-b423f5eb6636
+:END:
+#+title: Coq tactic injection
+
