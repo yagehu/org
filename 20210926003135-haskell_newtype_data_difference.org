@@ -1,0 +1,45 @@
+:PROPERTIES:
+:ID:       884e5a17-af32-465f-9a75-cd82cf355916
+:END:
+#+title: differences between =newtype= and =data=
+
+* =newtype= has restrictions on its uses
+
+The [[id:193bfe44-fc2a-4c9d-9962-64f722b653e4][=newtype=]] keyword exists to give an existing type a new identify,
+and it has more restrictions on its uses than the [[id:f9e014e9-dd18-455a-9ba9-83c76c359266][=data=]]
+keyword. Specifically, a [[id:193bfe44-fc2a-4c9d-9962-64f722b653e4][=newtype=]] can have only one value
+constructor, which must have exactly one field:
+
+#+BEGIN_SRC haskell
+-- ok: any number of fields and constructors
+data TwoFields = TwoFields Int Int
+
+-- ok: exactly one field
+newtype Okay = ExactlyOne Int
+
+-- ok: type parameters are no problem
+newtype Param a b = Param (Either a b)
+
+-- ok: record syntax is fine
+newtype Record =
+  Record
+    { getInt :: Int
+    }
+
+-- bad: no fields
+newtype TooFew = TooFew
+
+-- bad: more than one field
+newtype TooManyFields = Fields Int Int
+
+-- bad: more than one constructor
+newtype TooManyCtors
+  = Bad Int
+  | Worse Int
+#+END_SRC
+
+In addition, a type created with the [[id:f9e014e9-dd18-455a-9ba9-83c76c359266][=data=]] keyword
+has a bookkeeping cost at runtime, for example, in order to track
+which constructor created a value. A [[id:193bfe44-fc2a-4c9d-9962-64f722b653e4][=newtype=]] value, on the other
+hand, can have only one constructor and so does not need this
+overhead. This makes it more space- and time-efficient at runtime.

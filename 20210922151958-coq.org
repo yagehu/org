@@ -77,6 +77,36 @@ instantiating. We could instead simply write =apply trans_eq with
   Qed.
 #+END_SRC
 
+* =apply in=
+
+=apply L in H= matches some conditional statement =L= (of the form =X
+-> Y=, say) against a hypothesis =H= in the context.  However, unlike
+ordinary =apply= (which rewrites a goal matching =Y= into a subgoal
+=X=), =apply L in H= matches =H= against =X= and, if successful,
+replaces it with =Y=.
+
+In other words, =apply L in H= gives us a form of "forward reasoning":
+given =X -> Y= and a hypothesis matching =X=, it produces a hypothesis
+matching =Y=.
+
+By contrast, =apply L= is "backward reasoning": it says that if we
+know =X -> Y= and we are trying to prove =Y=, it suffices to prove
+=X=.
+
+Here is a variant of a proof from above, using forward reasoning
+throughout instead of backward reasoning.
+
+#+BEGIN_SRC coq
+Theorem silly4 : forall (n m p q : nat),
+  (n = m -> p = q) ->
+  m = n ->
+  q = p.
+Proof.
+  intros n m p q EQ H.
+  symmetry in H. apply EQ in H. symmetry in H.
+  apply H.  Qed.
+#+END_SRC
+
 * Difference between apply and [[id:eacb3f4e-f077-4db9-814d-89f270a51fbd][rewrite]]
 
 The rewrite tactic is used to apply a known equality to either the

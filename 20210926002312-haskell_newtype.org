@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       193bfe44-fc2a-4c9d-9962-64f722b653e4
+:END:
+#+title: =newtype=
+
+#+BEGIN_SRC haskell
+newtype UniqueId = UniqueId Int
+  deriving (Eq)
+#+END_SRC

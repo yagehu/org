@@ -1,0 +1,21 @@
+:PROPERTIES:
+:ID:       89380d88-a433-4140-a5d3-4131ca42be37
+:END:
+#+title: Coq tactic discriminate
+
+The =discriminate= tactic embodies the principle of disjointness,
+which says that two terms beginning with different constructors (like
+=O= and =S=, or =true= and =false= can never be equal. It is used on a
+hypothesis involving an equality between different constructors (e.g.,
+=false = true=), and it solves the current goal immediately.
+
+* Example
+
+#+BEGIN_SRC coq
+  Theorem discriminate_ex :
+    forall (n m : nat), false = true -> n = m.
+  Proof.
+    intros n contra.
+    discriminate contra.
+  Qed.
+#+END_SRC

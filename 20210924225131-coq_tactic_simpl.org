@@ -1,0 +1,18 @@
+:PROPERTIES:
+:ID:       cd317dcc-19d5-4729-827e-08ba6e749b9e
+:END:
+#+title: Coq tactic simpl
+
+* =simpl in=
+
+=simpl in H= performs simplification on the hypothesis =H= in the
+context.
+
+#+BEGIN_SRC coq
+Theorem S_inj : forall (n m : nat) (b : bool),
+  ((S n) =? (S m)) = b  ->
+  (n =? m) = b.
+Proof.
+  intros n m b H. simpl in H. apply H.
+Qed.
+#+END_SRC coq

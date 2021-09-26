@@ -1,0 +1,13 @@
+:PROPERTIES:
+:ID:       ab7b52d2-a434-4d5d-a33d-65aa7e562467
+:END:
+#+title: Haskell type synonyms
+
+The =type= keyword introduces a type synonym. Type synonyms are purely
+for making code more readable. In the following example, =Int= and
+=CustomerID= can be used interchangeably.
+
+#+BEGIN_SRC haskell
+  type CustomerID = Int
+  type ReviewBody = String
+#+END_SRC

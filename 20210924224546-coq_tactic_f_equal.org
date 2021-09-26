@@ -1,0 +1,16 @@
+:PROPERTIES:
+:ID:       b59ab37a-aecc-4d1b-94d0-b3e2502b02e7
+:END:
+#+title: Coq tactic f_equal
+
+Given a goal of the form =f a1 ... an = g b1 ... bn=, the tactic
+=f_equal= will produce subgoals of the form =f = g=, =a1 = b1=, ...,
+=an = bn=. At the same time, any of these subgoals that are simple
+enough (e.g., immediately provable by =reflexivity=) will be
+automatically discharged by =f_equal=.
+
+#+BEGIN_SRC coq
+Theorem eq_implies_succ_equal' : forall (n m : nat),
+  n = m -> S n = S m.
+Proof. intros n m H. f_equal. apply H. Qed.
+#+END_SRC
