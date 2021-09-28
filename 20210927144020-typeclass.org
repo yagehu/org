@@ -1,0 +1,21 @@
+:PROPERTIES:
+:ID:       656214e8-505c-470e-a0dd-4a1e99f012ab
+:END:
+#+title: the =class= keyword
+
+The =class= keyword declares a [[id:fbb01636-4139-4a7d-8031-b60a6b1341ac][typeclass]]. The following example
+declared a [[id:fbb01636-4139-4a7d-8031-b60a6b1341ac][typeclass]] named =BasicEq=.
+
+#+BEGIN_SRC haskell
+class BasicEq a where
+  isEqual :: a -> a -> Bool
+#+END_SRC
+
+The type of =isEqual= is:
+
+#+BEGIN_SRC haskell
+isEqual :: (BasicEq a) => a -> a -> Bool
+#+END_SRC
+
+This means for all types =a=, so long as =a= is an instance of
+=BasicEq=, =isEqual= takes two parameters of type =a= and returns a =Bool=.

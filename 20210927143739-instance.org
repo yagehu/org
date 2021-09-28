@@ -1,0 +1,14 @@
+:PROPERTIES:
+:ID:       1c99cbbb-5fce-47e7-9c72-963e742cc10b
+:END:
+#+title: the =instance= keyword
+
+The =instance= keyword makes a type an instance of a [[id:fbb01636-4139-4a7d-8031-b60a6b1341ac][typeclass]]. For
+exmaple, this example declares =Bool= an instance of =BasicEq=.
+
+#+BEGIN_SRC haskell
+instance BasicEq Bool where
+  isEqual True  True  = True
+  isEqual False False = True
+  isEqual _     _     = False
+#+END_SRC

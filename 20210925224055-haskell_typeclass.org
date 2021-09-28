@@ -1,16 +1,9 @@
 :PROPERTIES:
 :ID:       fbb01636-4139-4a7d-8031-b60a6b1341ac
 :END:
-#+title: Haskell typeclass
-
-* Typeclass
+#+title: typeclass
 
 Typeclasses define a set of functions that can have different
 implementations depending on the type of data they are given.
 
-** Example
-
-#+BEGIN_SRC haskell
-  class BasicEq a where
-    isEqual :: a -> a -> Bool
-#+END_SRC
+Use [[id:656214e8-505c-470e-a0dd-4a1e99f012ab][the class keyword]] to declare a typeclass.

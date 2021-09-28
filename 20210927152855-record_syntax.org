@@ -1,0 +1,16 @@
+:PROPERTIES:
+:ID:       b578631c-8a6f-4b06-9159-1f5e43f3c889
+:END:
+#+title: record syntax
+#+filetags: :haskell:
+
+You can define a type using record syntax. This allows you to provide
+field names to each type in the constructor.
+
+#+BEGIN_SRC haskell
+data Employee =
+  Employee
+    { employeeName :: String
+    , employeeAge :: Int
+    }
+#+END_SRC
