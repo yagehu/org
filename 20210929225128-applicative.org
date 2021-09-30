@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       0e22257e-4d3b-4d5c-9c54-6ebd807937cd
+:END:
+#+title: applicative
+#+filetags: :haskell:
+
+Applicatives are monoidal [[id:577b4845-8f51-46a2-bf75-c03b1012f3b3][functors]]. The [[id:e6746087-fe59-4602-bdfc-9ca6e00fe0d2][=Applicative=]] [[id:fbb01636-4139-4a7d-8031-b60a6b1341ac][typeclass]]
+represents the applicative [[id:577b4845-8f51-46a2-bf75-c03b1012f3b3][functors]].

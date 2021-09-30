@@ -1,0 +1,11 @@
+:PROPERTIES:
+:ID:       6ab758c5-4c7e-4be6-9838-f60ddb8552f7
+:ROAM_ALIASES: "orphan instances"
+:END:
+#+title: orphan instance
+#+filetags: :haskell:
+
+An orphan instance is when an instance is defined for a datatype and
+[[id:fbb01636-4139-4a7d-8031-b60a6b1341ac][typeclass]] but not in the same module an either the declaration of the
+[[id:fbb01636-4139-4a7d-8031-b60a6b1341ac][typeclass]] or the datatype. Writing orphan instances should be avoided
+/at all costs/.

@@ -1,0 +1,13 @@
+:PROPERTIES:
+:ID:       09fce9fb-f58f-43e3-937e-8b599afc04ef
+:END:
+#+title: =Functor=
+#+filetags: :haskell:
+
+The =Functor= [[id:fbb01636-4139-4a7d-8031-b60a6b1341ac][typeclass]] generalizes the [[id:577b4845-8f51-46a2-bf75-c03b1012f3b3][functor]] pattern. Its
+definition looks like:
+
+#+BEGIN_SRC haskell
+class Functor f where
+  fmap :: (a -> b) -> f a -> f b
+#+END_SRC

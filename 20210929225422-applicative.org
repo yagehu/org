@@ -1,0 +1,16 @@
+:PROPERTIES:
+:ID:       e6746087-fe59-4602-bdfc-9ca6e00fe0d2
+:END:
+#+title: =Applicative=
+
+The =Applicative= [[id:fbb01636-4139-4a7d-8031-b60a6b1341ac][typeclass]] allows for function application lifted
+over structure (like [[id:09fce9fb-f58f-43e3-937e-8b599afc04ef][=Functor=]]). But with =Applicative=, the function
+we're applying is also embedded in some structure. Because the
+function and the value it's being applied to both have structure, the
+structures have to be smashed together.
+
+#+BEGIN_SRC haskell
+class Functor f => Applicative f where
+  pure :: a -> f a
+  (<*>) :: f (a -> b) -> f a -> f b
+#+END_SRC

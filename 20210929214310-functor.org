@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       577b4845-8f51-46a2-bf75-c03b1012f3b3
+:END:
+#+title: functor
+#+filetags: :haskell:
+
+A functor is a way to apply a function over some type without changing
+its structure. For example, mapping over a list does not change its
+length. No elements are removed or added, only transformed.
