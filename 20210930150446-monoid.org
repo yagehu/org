@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       7e5bac5b-a885-435e-999b-9a48da408ffd
+:END:
+#+title: monoid
+#+filetags: :haskell:
+
+A monoid is a binary associative operation with an identity.

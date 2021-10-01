@@ -1,9 +1,10 @@
 :PROPERTIES:
 :ID:       fbb01636-4139-4a7d-8031-b60a6b1341ac
+:ROAM_ALIASES: "type classes"
 :END:
-#+title: typeclass
+#+title: type class
 
-Typeclasses define a set of functions that can have different
+Type classes define a set of functions that can have different
 implementations depending on the type of data they are given.
 
-Use [[id:656214e8-505c-470e-a0dd-4a1e99f012ab][the class keyword]] to declare a typeclass.
+Use [[id:656214e8-505c-470e-a0dd-4a1e99f012ab][the class keyword]] to declare a type class.

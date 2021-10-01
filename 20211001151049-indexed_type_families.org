@@ -1,0 +1,17 @@
+:PROPERTIES:
+:ID:       cdb506ad-165a-43e6-b7a8-45736df0ad82
+:ROAM_ALIASES: "type families"
+:END:
+#+title: indexed type families
+#+filetags: :haskell:
+
+Indexed type families, or *type families* for short, are a Haskell
+extension supporting ad-hoc overloading of data types. Type families
+are parametric types that can be assigned specialized representations
+based on the type parameters they are instantiated with. They are the
+data type analogue of [[id:fbb01636-4139-4a7d-8031-b60a6b1341ac][type classes]]: families are used to define
+overloaded data in the same way that classes are used to define
+overloaded functions.
+
+Type families come in two flavors: [[id:34030bb5-b38e-4fbd-87b8-30f0e6005ac5][/data families/]] and /type synonym
+families/.

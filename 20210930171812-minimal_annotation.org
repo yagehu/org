@@ -1,0 +1,15 @@
+:PROPERTIES:
+:ID:       5654f972-07de-404b-bc97-d7ec6333c0e5
+:END:
+#+title: =MINIMAL= annotation
+#+filetags: :haskell:
+
+The =MINIMAL= annotation on a [[id:fbb01636-4139-4a7d-8031-b60a6b1341ac][typeclass]] specifies its minimally
+complete definition. For example, this says a minimally complete
+definition of =Foldable= must define either =foldMap= or =foldr= for a
+given data type.
+
+#+BEGIN_SRC haskell
+class Foldable t where
+  {-# MINIMAL foldMap | foldr #-}
+#+END_SRC

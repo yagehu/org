@@ -1,0 +1,22 @@
+:PROPERTIES:
+:ID:       30d38cdc-77e1-404c-b0c1-0ebbbdbbba7b
+:ROAM_ALIASES: "generalized algebraic data type" GADTs GADT
+:END:
+#+title: generalized algebraic data types
+#+filetags: :haskell:
+
+*Generalized algebraic data types (GADTs)* are a generalization of
+algebraic data types. They allow explicit type signatures of
+constructors. GADTs allow more compile-time checks than ADTs.
+
+The GADTs feature can be enabled with the [[id:09a87263-49a0-4300-b07c-f5d0df34a418][GADTs language extension]].
+
+#+BEGIN_SRC haskell
+data STy ty where
+  SInt  :: STy Int
+  SBool :: STy Bool
+
+zero :: STy ty -> ty
+zero SInt = 0
+zero SBool = False
+#+END_SRC

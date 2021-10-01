@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       09a87263-49a0-4300-b07c-f5d0df34a418
+:END:
+#+title: =GADTs= language extension
+
+#+BEGIN_SRC haskell
+{-# LANGUAGE GADTs #-}
+#+END_SRC

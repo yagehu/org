@@ -1,0 +1,28 @@
+:PROPERTIES:
+:ID:       34030bb5-b38e-4fbd-87b8-30f0e6005ac5
+:END:
+#+title: data families
+#+filetags: :haskell:
+
+Data families are one of two kinds of [[id:cdb506ad-165a-43e6-b7a8-45736df0ad82][type families]]. They are the
+indexed form of data and newtype definitions. Data families appear in
+two flavors: (1) they can be defined on the top level, or (2) they can
+appear inside [[id:fbb01636-4139-4a7d-8031-b60a6b1341ac][type classes]] (in which case they are known as associated
+types). The former is the more general variant, as it lacks the
+requirement for the type-indices to coincide with the class
+parameters. However, the latter can lead to more clearly structured
+code and compiler warnings if some type instances were omitted.
+
+Indexed data families are introduced by a signature such as
+
+#+BEGIN_SRC haskell
+data family GMap k :: * -> *
+#+END_SRC
+
+The special =family= distinguishes family from standard data
+declarations. The result kind annotation is optional and defaults to
+=*= if omitted:
+
+#+BEGIN_SRC haskell
+data family Array e
+#+END_SRC
