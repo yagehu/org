@@ -2,6 +2,9 @@
 \#*\#
 .\#*
 
+# HTML
+*.html
+
 # Latex
 *.pdf
 *.tex
