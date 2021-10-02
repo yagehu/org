@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       CA07BF0A-EBB5-430F-A6AF-8A6D74811A01
+:END:
+#+title: Spectacle questions
+
+* What's an extensible sum? What does it mean to have an extensible sum inhabited by something?
+
+For example:
+https://github.com/awakesecurity/spectacle/blob/main/src/Language/Spectacle/Lang/Op.hs#L15
