@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       bce170fd-97b5-49c3-94ad-ffba72110c05
+:END:
+#+title: type equality constraint
+#+filetags: :haskell:
+
+A type context can include equality constraints of the form =t1 ~ t2=,
+which denotes that the types =t1= and =t2= need to be the same.

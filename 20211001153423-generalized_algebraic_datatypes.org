@@ -15,8 +15,35 @@ The GADTs feature can be enabled with the [[id:09a87263-49a0-4300-b07c-f5d0df34a
 data STy ty where
   SInt  :: STy Int
   SBool :: STy Bool
+#+END_SRC
 
+In this example, there are two data constructors =SInt= and
+=SBool=. They differ from regular data constructors in that they
+specify their return types. =SInt= always gives an =STy Int= while
+=SBool= always gives an =STy Bool=. With this, a function can return
+values of different types in different clauses:
+
+#+BEGIN_SRC haskell
 zero :: STy ty -> ty
 zero SInt = 0
 zero SBool = False
 #+END_SRC
+
+This would not normally type check.
+
+The previous GADT =STy= is syntactic sugar. The following two
+declarations are equivalent.
+
+#+BEGIN_SRC haskell
+data STy ty where
+  SInt   :: STy Int
+  SBool  :: STy Bool
+  SMaybe :: STy ty' -> STy (Maybe ty')
+
+data STy ty
+  = (ty ~ Int) => SInt
+  | (ty ~ Bool) => SBool
+  | forall ty'. (ty ~ Maybe ty') => SMaybe (STy ty')
+#+END_SRC
+
+In the second declaration, the =~= symbol is the [[id:bce170fd-97b5-49c3-94ad-ffba72110c05][type equality constraint]].
